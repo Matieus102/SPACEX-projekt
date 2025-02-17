@@ -1,4 +1,3 @@
-
 from abc import ABC, abstractmethod
 
 class SpaceVehicleBase(ABC):
@@ -20,7 +19,7 @@ class Rocket(SpaceVehicleBase):
 
     def launch_sequence(self):
         if self._fuel_level > 0:
-            print(f"Rakieta startuje z mocą ciągu {self.thrust_power}!")
+            print(f"Rakieta startuje z mocą ciągu {self.thrust_power}! Kod startowy: {LAUNCH_CODE}")
         else:
             print("Brak paliwa! Start niemożliwy.")
 
@@ -37,6 +36,7 @@ class Person:
 class MissionMember:
     def report_status(self):
         return "Członek misji: Sprawdzam systemy."
+
 
 from people.person import Person
 from utilities.mission_member import MissionMember
@@ -58,9 +58,11 @@ def main():
     print(f"Kod startowy misji: {LAUNCH_CODE}")
     
     rakieta = Rocket(thrust_power=5000)
-    student = StudentEngineer("Jan", "Kowalski", "Mechanika")
+    rakieta.set_fuel_level(80)  
     
+    student = StudentEngineer("Jan", "Kowalski", "Mechanika")
     print(student.report_status())  
+    
     rakieta.launch_sequence()
     
 if __name__ == "__main__":
